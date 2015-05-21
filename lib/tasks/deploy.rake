@@ -27,7 +27,7 @@ namespace :deploy do
     BRANCH = config['branch']
     REMOTE = config['remote']
     GIT_OPTS = config['git_opts']
-    CHECK_SELECTOR = config['check']['selector'] || '.password'
+    CHECK_SELECTOR = config['check']['selector'] || 'label.password'
     CHECK_TEXT = config['check']['text'] || 'senha'
   end
 
