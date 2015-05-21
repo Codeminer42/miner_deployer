@@ -22,8 +22,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add config into `config/deploy.yml` like above:
 
+```
+production:
+  app: app-heroku-name
+  url: http://appdomain.com
+  branch: production-or-other-branch
+  remote: git@heroku.com
+staging:
+  ...
+```
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
