@@ -9,16 +9,12 @@ TODO: Delete this and the text above, and describe your gem
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'miner_deployer'
+gem 'miner_deployer', git: 'git@github.com:Codeminer42/miner_deployer.git'  
 ```
 
 And then execute:
 
     $ bundle
-
-Or install it yourself as:
-
-    $ gem install miner_deployer
 
 ## Usage
 
