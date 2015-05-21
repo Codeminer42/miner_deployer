@@ -27,6 +27,8 @@ namespace :deploy do
     BRANCH = config['branch']
     REMOTE = config['remote']
     GIT_OPTS = config['git_opts']
+    CHECK_SELECTOR = config['check']['selector'] || '.password'
+    CHECK_TEXT = config['check']['text'] || 'senha'
   end
 
   task :check do
@@ -35,7 +37,7 @@ namespace :deploy do
         puts 'Let\'s try the system...'
         sleep 5
         doc = Nokogiri::HTML(open(URL))
-        if doc.at('.item-login').text.downcase == 'login'
+        if doc.at(CHECK_SELECTOR).text.downcase == CHECK_TEXT
           puts green('System is ONLINE now! 🍺 👌')
         else
           puts red('PROBLEMS! System is on, but something is wrong!!! 😭 😭 😭 ')

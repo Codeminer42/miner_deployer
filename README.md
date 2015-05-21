@@ -26,6 +26,9 @@ production:
   url: http://appdomain.com
   branch: production-or-other-branch
   remote: git@heroku.com
+  check:
+    selector: '.password'
+    text: 'senha'
 staging:
   ...
 ```
