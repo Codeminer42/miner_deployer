@@ -27,9 +27,9 @@ namespace :deploy do
     BRANCH = config['branch']
     REMOTE = config['remote']
     GIT_OPTS = config['git_opts']
-    CHECK = config['check'] || {'selector' => 'label.password', 'text' => 'password'}
-    CHECK_SELECTOR = CHECK['selector'] || 'label.password'
-    CHECK_TEXT = CHECK['text'] || 'senha'
+    CHECK = config['check'] || {}
+    CHECK_SELECTOR = CHECK['selector']
+    CHECK_TEXT = CHECK['text']
   end
 
   task :check do
@@ -37,9 +37,12 @@ namespace :deploy do
       begin
         puts 'Let\'s try the system...'
         sleep 5
-        doc = Nokogiri::HTML(open(URL))
-        if doc.at(CHECK_SELECTOR).text.downcase == CHECK_TEXT
+        page = open URL
+        doc = Nokogiri::HTML page
+        if CHECK_SELECTOR && doc.at(CHECK_SELECTOR).text.downcase == CHECK_TEXT
           puts green('System is ONLINE now! 🍺 👌')
+        elsif page.status.first.to_i
+          puts green('System is ONLINE now (or just respond 200)! 🍺 👌')
         else
           puts red('PROBLEMS! System is on, but something is wrong!!! 😭 😭 😭 ')
         end
