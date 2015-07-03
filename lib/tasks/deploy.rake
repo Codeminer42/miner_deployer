@@ -46,8 +46,12 @@ namespace :deploy do
         else
           puts red('PROBLEMS! System is on, but something is wrong!!! 😭 😭 😭 ')
         end
-      rescue OpenURI::HTTPError
-        puts red('PROBLEMS! System is down!!! 😭 😭 😭 😭 😭')
+      rescue OpenURI::HTTPError => e
+        if e.message =~ /401/
+          puts green('MAYBE system is online, we are forbidden to touch it.')
+        else
+          puts red('PROBLEMS! System is down!!! 😭 😭 😭 😭 😭')
+        end
       end
     end
   end
