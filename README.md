@@ -9,7 +9,7 @@ TODO: Delete this and the text above, and describe your gem
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'miner_deployer', git: 'git@github.com:Codeminer42/miner_deployer.git'  
+gem 'miner_deployer', github: 'Codeminer42/miner_deployer'  
 ```
 
 And then execute:
